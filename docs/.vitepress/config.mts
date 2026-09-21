@@ -62,10 +62,10 @@ export default defineConfig({
         {
           text: 'Finding places',
           items: [
-            { text: 'Searching by name', link: '/guide/search' },
+            { text: 'Searching for places', link: '/guide/search' },
             { text: 'Searching by area and date', link: '/guide/search-area-and-date' },
-            { text: 'Working with results', link: '/guide/results' },
-            { text: 'Saved searches', link: '/guide/saved-searches' },
+            { text: 'Reading your results', link: '/guide/results' },
+            { text: 'Saving searches', link: '/guide/saved-searches' },
           ],
         },
         {
@@ -74,21 +74,21 @@ export default defineConfig({
             { text: 'Preparing your data', link: '/guide/prepare-data' },
             { text: 'Creating a layer', link: '/guide/create-layer' },
             { text: 'Editing records', link: '/guide/edit-records' },
-            { text: 'Mapping places in a text', link: '/guide/texts' },
+            { text: 'Working with texts', link: '/guide/texts' },
           ],
         },
         {
           text: 'Organising and sharing',
           items: [
-            { text: 'Collections', link: '/guide/collections' },
-            { text: 'Sharing and collaborating', link: '/guide/sharing' },
-            { text: 'Exporting', link: '/guide/exporting' },
-            { text: 'Visualising and embedding', link: '/guide/visualising' },
+            { text: 'Multilayers', link: '/guide/collections' },
+            { text: 'Sharing your work', link: '/guide/sharing' },
+            { text: 'Exporting and feeds', link: '/guide/exporting' },
+            { text: 'Visualising your data', link: '/guide/visualising' },
           ],
         },
         {
           text: 'Analysing',
-          items: [{ text: 'Analysis tools', link: '/guide/analysis' }],
+          items: [{ text: 'Analysing a layer', link: '/guide/analysis' }],
         },
         {
           text: 'Reference',
