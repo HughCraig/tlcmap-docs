@@ -12,3 +12,4 @@ This repository is used for generating the documentation for [TLCMap](https://tl
 
 - Don't use the old name "GHAP". It's been deprecated and replaced with "TLCMap".
 - When writing documentation, always use the source code as the main reference. The documentation or readme files from the related projects/repositories may be outdated and should be only used as a secondary reference.
+- Use Australian English spelling and grammar.
