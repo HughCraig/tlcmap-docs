@@ -7,6 +7,8 @@ the data. Everything on this page is available without logging in.
 
 Type a name into the box and press Enter, or click the magnifying glass.
 
+![The TLCMap search bar](/images/search-bar.png)
+
 The dropdown beside the box controls how the text is matched:
 
 | Match type | What it matches |
@@ -47,6 +49,8 @@ it directly, without running a search.
 The chevron beside the search box opens the advanced panel, which has three sections:
 **Filters**, **Search within region**, and file-based searches. Region searching and
 dates are covered in [Searching by area and date](./search-area-and-date).
+
+![The advanced search panel](/images/advanced-search.png)
 
 ### Search description
 
@@ -168,3 +172,9 @@ CSV or GeoJSON. See the [search API](/developers/search-api).
 
 If you want to come back to a search and pick up any records added since, save it instead
 — see [Saving searches](./saved-searches).
+
+## Adding a place from the map
+
+Right-clicking the map is a shortcut for contributing rather than for searching: it drops
+a marker and offers to add a place at that point. See
+[Adding a place straight from the map](./create-layer#adding-a-place-straight-from-the-map).

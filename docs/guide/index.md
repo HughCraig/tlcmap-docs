@@ -31,8 +31,10 @@ date range or an area you draw on the map, then view the results as points, clus
 list. See [Searching for places](./search).
 
 **Add your own data.** Upload a CSV, KML or GeoJSON file, or create records one at a
-time. Your layer can stay private while you work on it and be published when it is ready.
-See [Preparing your data](./prepare-data).
+time — right-clicking a point on the map is the quickest way in. Your layer can stay
+private while you work on it and be published when it is ready. See
+[Preparing your data](./prepare-data) and
+[Creating a layer](./create-layer#adding-a-place-straight-from-the-map).
 
 **Map text.** Give TLCMap a document and it will find the placenames in it, locate them,
 and turn them into a layer you can map. See [Working with texts](./texts).

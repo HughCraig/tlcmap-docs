@@ -24,6 +24,8 @@ rather than where each individual record sits.
 The list gives you the full detail of each record, and it is where the export and
 visualisation controls live.
 
+![The search results list](/images/search-results.png)
+
 Above the results you will find:
 
 - **Displaying *n* from a total of *N*** — how many records are shown against how many

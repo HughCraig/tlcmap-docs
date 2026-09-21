@@ -9,6 +9,8 @@ You need an account. See [Accounts](./accounts).
 
 Choose **Contribute** in the main menu.
 
+![The Contribute Map Layer form](/images/contribute-layer.png)
+
 ### 1. Layer details
 
 | Field | |
@@ -65,6 +67,40 @@ is invisible to everyone except you and the people you share it with, and you ca
 it later from the layer page. Publishing is a single setting; there is no separate
 process.
 :::
+
+## Adding a place straight from the map
+
+There is a shortcut that skips the Contribute form entirely. On the map on the
+[TLCMap home page](https://tlcmap.org), **right-click anywhere** on the map. A marker
+appears at that point, with a small pin button beside it.
+
+![A marker and pin button on the map after right-clicking](/images/map-add-place.png)
+
+Click the pin button and the **Add a place to TLCMap** form opens, with the latitude and
+longitude already filled in from where you clicked.
+
+![The Add a place to TLCMap form](/images/add-place-modal.png)
+
+Every place has to live in a layer, so the form asks for one first:
+
+- Choose an existing layer from the **Layer** dropdown, or
+- Click **New layer** to create one without leaving the page. You are returned to this
+  form once it is created.
+
+The rest of the form is the same as the record form described in
+[Editing records](./edit-records#the-record-form) — title, coordinates, description,
+dates, image, reference, region and extended data. Only **Layer**, **Title**,
+**Latitude** and **Longitude** are required.
+
+Click **Add Place** to save.
+
+::: tip
+This is the quickest way to start contributing: right-click the spot, create a layer on
+the way through, and you have a published place in one pass. Come back to the layer later
+to fill in its metadata.
+:::
+
+If you are not logged in, the pin button sends you to the login page instead.
 
 ## Adding a file to an existing layer
 

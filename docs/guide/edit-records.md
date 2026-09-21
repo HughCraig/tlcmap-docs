@@ -12,6 +12,10 @@ See [Sharing your work](./sharing).
 records; for anything more, prepare a file and upload it — see
 [Preparing your data](./prepare-data).
 
+You can also add a place without opening the layer at all, by right-clicking the point on
+the map on the TLCMap home page. See
+[Adding a place straight from the map](./create-layer#adding-a-place-straight-from-the-map).
+
 ## The record form
 
 Only the title is required. Everything else can be left empty.
