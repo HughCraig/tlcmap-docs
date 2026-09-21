@@ -12,8 +12,11 @@ const APP = 'https://tlcmap.org'
 /** The WordPress site, which holds the general and institutional content. */
 const SITE = 'https://site.tlcmap.org'
 
-/** The TLCMap Views repository, which holds the Views reference documentation. */
-const VIEWS_REPO = 'https://github.com/HughCraig/TLCMapViews'
+/**
+ * The TLCMap application repository, behind the GitHub icon in the navigation bar.
+ * It still carries the application's former name.
+ */
+const APP_REPO = 'https://github.com/HughCraig/GHAP'
 
 export default defineConfig({
   lang: 'en-AU',
@@ -129,7 +132,7 @@ export default defineConfig({
       text: 'Edit this page on GitHub',
     },
 
-    socialLinks: [{ icon: 'github', link: VIEWS_REPO }],
+    socialLinks: [{ icon: 'github', link: APP_REPO }],
 
     outline: [2, 3],
 
