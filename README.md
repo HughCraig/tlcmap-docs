@@ -169,6 +169,27 @@ Also in the application:
 - `app/ViewConfig/GhapConfig.php` builds documentation links into the popup content of maps
   rendered by TLCMap Views, so those links are part of the same change.
 
+## Development
+
+Requires Node 18, or 20 and above — the constraint comes from the Vite release VitePress
+bundles.
+
+```
+npm install
+npm run dev
+```
+
+`npm run dev` serves the site at `http://localhost:5173` and reloads on save.
+
+| Script | |
+| --- | --- |
+| `npm run dev` | Serve locally, with hot reload |
+| `npm run build` | Build to `docs/.vitepress/dist` |
+| `npm run preview` | Serve the built output, to check it before it is deployed |
+
+The build fails on a link to a page that does not exist, so it doubles as the link check.
+Run it before opening a pull request.
+
 ## Contributing
 
 Small corrections and wording changes: use **Edit this page on GitHub** at the foot of any
