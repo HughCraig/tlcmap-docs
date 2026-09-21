@@ -40,6 +40,45 @@ docs/
   views/              TLCMap Views overview
 ```
 
+### Information architecture
+
+Two content sections, split by audience, plus the Views pointer. There is no separate
+top-level division for concepts or reference: at this size a third tower only makes the
+reader guess which of three places holds an answer. Concepts open the guide, and the FAQs
+and glossary close it.
+
+Sidebar groups are grouping only. Page URLs stay one level deep under each section, so a
+page can be regrouped without breaking its URL.
+
+**Guide** (`/guide/`)
+
+| Group | Pages |
+| --- | --- |
+| Start here | `/guide/` (what TLCMap is), `concepts`, `accounts` |
+| Finding places | `search`, `search-area-and-date`, `results`, `saved-searches` |
+| Adding your own data | `prepare-data`, `create-layer`, `edit-records`, `texts` |
+| Organising and sharing | `collections`, `sharing`, `exporting`, `visualising` |
+| Analysing | `analysis` |
+| Reference | `faqs`, `glossary` |
+
+**Developers** (`/developers/`)
+
+`/developers/` (access, CORS, paging limits), `search-api`, `layers-api`, `analysis-api`,
+`formats`, `data-model`, `ro-crate`.
+
+**TLCMap Views** (`/views/`) — one overview page, linking out to the repository.
+
+Administration functions are not documented; the audience is TLCMap staff only.
+
+Two rules keep the structure from drifting:
+
+1. **Each field and parameter is documented once.** The guide owns what goes into a file
+   you upload; the developer documentation owns what comes back out of an endpoint. Where
+   a reader of one needs the other, link rather than restate. The record fields are
+   defined once, in `/developers/data-model/`.
+2. **A page earns its existence by being linkable.** Something only ever read in sequence
+   with its neighbour is a heading, not a page.
+
 ### TLCMap Views
 
 The Views reference documentation stays in the `TLCMapViews` repository under
@@ -95,6 +134,7 @@ The `/help/` prefix used by the WordPress site is dropped. Sections live at the 
 | `/help/guides/`, `/help/guides/guide/` | `/guide/` |
 | `/help/faqs/` | `/guide/faqs/` |
 | `/help/developers/` | `/developers/` |
+| `/core-data/` | `/developers/data-model/` |
 | — | `/views/` |
 
 ### Redirects
@@ -110,14 +150,27 @@ publications, research outputs and third-party links, and must not break.
 
 ### Application integration
 
-In the TLCMap application:
+`TLCMAP_DOC_URL` is currently the base URL of the WordPress site, not of the
+documentation. The application uses it for 30 links across 9 files: 17 documentation links
+under `/help/`, and 13 links to WordPress pages such as `/about/`, `/contact/`,
+`/first-australians/` and `/about/conditionsofuse/`. Pointing it at the documentation site
+alone would break the second group.
 
-- `TLCMAP_DOC_URL` keeps its current value, `https://docs.tlcmap.org/`. The hostname does
-  not change, only what serves it.
-- The documentation paths hardcoded in `resources/views/templates/layout.blade.php` and
-  `resources/views/templates/form.blade.php` are updated to the new paths above.
-- The two links in `layout.blade.php` that hardcode `https://docs.tlcmap.org` use
-  `config('app.tlcmap_doc_url')` instead.
+It is therefore split in two:
+
+| Setting | Value | Used for |
+| --- | --- | --- |
+| `TLCMAP_DOC_URL` | `https://docs.tlcmap.org/` | the 17 documentation links, repointed to the paths above |
+| `TLCMAP_SITE_URL` | `https://site.tlcmap.org/` | the 13 WordPress links |
+
+Also in the application:
+
+- The two links in `layout.blade.php` that hardcode `https://docs.tlcmap.org` use the
+  relevant configuration value instead.
+- The **Core Data** menu item moves from the WordPress page to `/developers/data-model/`,
+  which becomes the single reference for the record fields.
+- `app/ViewConfig/GhapConfig.php` builds documentation links into the popup content of maps
+  rendered by TLCMap Views, so those links are part of the same change.
 
 ## Contributing
 
