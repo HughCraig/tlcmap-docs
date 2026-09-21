@@ -20,7 +20,7 @@ General and institutional content stays on the WordPress site. It is not migrate
 | Web Services API, data formats, RO-Crate, compliance | Documentation site | This repository |
 | TLCMap Views overview | Documentation site | This repository |
 | TLCMap Views reference | `TLCMapViews` repository on GitHub | `TLCMapViews` repository |
-| About, acknowledgement of First Australians, partners, researchers, research outputs, updates, newsletter, contact, Conditions of Use | WordPress site | WordPress |
+| About, acknowledgement of First Australians, partners, researchers, research outputs, updates, newsletter, contact, Conditions of Use, core data sources | WordPress site | WordPress |
 
 The WordPress "Tools" pages remain as short landing pages that link into the
 documentation site, rather than duplicating its content.
@@ -134,7 +134,6 @@ The `/help/` prefix used by the WordPress site is dropped. Sections live at the 
 | `/help/guides/`, `/help/guides/guide/` | `/guide/` |
 | `/help/faqs/` | `/guide/faqs/` |
 | `/help/developers/` | `/developers/` |
-| `/core-data/` | `/developers/data-model/` |
 | — | `/views/` |
 
 ### Redirects
@@ -153,7 +152,7 @@ publications, research outputs and third-party links, and must not break.
 `TLCMAP_DOC_URL` is currently the base URL of the WordPress site, not of the
 documentation. The application uses it for 30 links across 9 files: 17 documentation links
 under `/help/`, and 13 links to WordPress pages such as `/about/`, `/contact/`,
-`/first-australians/` and `/about/conditionsofuse/`. Pointing it at the documentation site
+`/first-australians/`, `/core-data/` and `/about/conditionsofuse/`. Pointing it at the documentation site
 alone would break the second group.
 
 It is therefore split in two:
@@ -167,8 +166,6 @@ Also in the application:
 
 - The two links in `layout.blade.php` that hardcode `https://docs.tlcmap.org` use the
   relevant configuration value instead.
-- The **Core Data** menu item moves from the WordPress page to `/developers/data-model/`,
-  which becomes the single reference for the record fields.
 - `app/ViewConfig/GhapConfig.php` builds documentation links into the popup content of maps
   rendered by TLCMap Views, so those links are part of the same change.
 
