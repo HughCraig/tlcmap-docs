@@ -50,16 +50,12 @@
 }
 
 /* Home page hero. The application uses flat colour rather than gradients, so the
-   heading is solid brand green and the sand tones appear only as the glow behind
-   the logo. */
+   heading is solid brand green and the logo sits on the page background with no
+   glow behind it. */
 :root {
   --vp-home-hero-name-color: var(--tlcm-green);
-  --vp-home-hero-image-background-image: linear-gradient(
-    -45deg,
-    var(--tlcm-sand) 40%,
-    var(--tlcm-sand-light) 60%
-  );
-  --vp-home-hero-image-filter: blur(48px);
+  --vp-home-hero-image-background-image: none;
+  --vp-home-hero-image-filter: none;
 }
 
 .dark {
@@ -75,4 +71,10 @@
 /* The mark is wide and low, so it needs less height than a square logo. */
 .VPNavBarTitle .logo {
   height: 22px;
+}
+
+/* The navigation title is clamped to the sidebar width, and "TLCMap Documentation"
+   alongside the mark does not fit the VitePress default. */
+:root {
+  --vp-sidebar-width: 300px;
 }
