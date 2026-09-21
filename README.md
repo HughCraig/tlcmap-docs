@@ -152,8 +152,8 @@ publications, research outputs and third-party links, and must not break.
 `TLCMAP_DOC_URL` is currently the base URL of the WordPress site, not of the
 documentation. The application uses it for 30 links across 9 files: 17 documentation links
 under `/help/`, and 13 links to WordPress pages such as `/about/`, `/contact/`,
-`/first-australians/`, `/core-data/` and `/about/conditionsofuse/`. Pointing it at the documentation site
-alone would break the second group.
+`/first-australians/`, `/core-data/` and `/about/conditionsofuse/`. Pointing it at the
+documentation site alone would break the second group.
 
 It is therefore split in two:
 
