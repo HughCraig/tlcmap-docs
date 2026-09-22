@@ -110,11 +110,43 @@ The site is **not** served from the application's document root: the Laravel fro
 controller rewrite in `public/.htaccess` must stay out of the request path for
 documentation URLs.
 
+### Hostnames
+
+| Hostname | Serves |
+| --- | --- |
+| `tlcmap.org` | The TLCMap application. This is the main domain and does not move. |
+| `guide.tlcmap.org` | The documentation site, until the cutover. |
+| `docs.tlcmap.org` | The WordPress site now; the documentation site after the cutover. |
+| `site.tlcmap.org` | The WordPress site, relocated from `docs.tlcmap.org`. Does not exist yet. |
+| `views.tlcmap.org` | TLCMap Views. Unchanged. |
+
+Deployment happens in two stages.
+
+**Now.** The documentation site goes live at `guide.tlcmap.org`. `docs.tlcmap.org` keeps
+serving WordPress and nothing else moves. The interim host is kept out of search — see
+[Indexing](#indexing) — so that nothing has to be migrated later, and it carries no legacy
+redirects, because no existing link points at it.
+
+**At the cutover.** The documentation site takes over `docs.tlcmap.org`, the WordPress site
+moves to `site.tlcmap.org`, and `guide.tlcmap.org` becomes a permanent redirect to
+`docs.tlcmap.org` at the same path. These happen together, in one change.
+
+`docs.tlcmap.org` is the durable address, and it is the one to put anywhere permanent —
+publications, printed material, the application's configuration. It does not serve the
+documentation yet, so until the cutover there is nothing to cite: share
+`guide.tlcmap.org` for reading and reviewing, and keep it out of anything that outlives
+the cutover. Links made to it do keep working afterwards, through the redirect.
+
 ### Server configuration
 
-The virtual host is version-controlled at
-[`deploy/docs.tlcmap.org.conf`](./deploy/docs.tlcmap.org.conf), including the legacy
-redirects below. It needs `rewrite`, `headers` and `deflate` enabled:
+The virtual hosts are version-controlled, one per stage:
+
+| File | Enable |
+| --- | --- |
+| [`deploy/guide.tlcmap.org.conf`](./deploy/guide.tlcmap.org.conf) | Now. The interim host. No legacy redirects, and kept out of search. |
+| [`deploy/docs.tlcmap.org.conf`](./deploy/docs.tlcmap.org.conf) | At the cutover. Carries the legacy redirects below, and redirects `guide.tlcmap.org` here. |
+
+Enable one or the other, never both. Both need `rewrite`, `headers` and `deflate`:
 
 ```
 sudo a2enmod rewrite headers deflate
@@ -129,24 +161,21 @@ compression — is worth having but nothing breaks without it.
 Rules live in the virtual host rather than in an `.htaccess` file, so the document root
 holds only the built site and `AllowOverride` stays `None`.
 
-`docs/public/robots.txt` allows indexing and points at `sitemap.xml`, which the build
-generates from `sitemap.hostname` in the site configuration. The staging host must
-override that file with a `Disallow: /` so the pre-cutover site is not indexed; an `Alias`
-for `/robots.txt` in the staging virtual host is enough.
+#### Indexing
 
-### Hostnames
+`docs/public/robots.txt` is the file for the final hostname: it allows crawling and points
+at `sitemap.xml`, which the build generates from `sitemap.hostname` in the site
+configuration. Both name `docs.tlcmap.org`, because that is where the documentation is
+meant to be found.
 
-| Hostname | Serves |
-| --- | --- |
-| `tlcmap.org` | The TLCMap application. This is the main domain and does not move. |
-| `docs.tlcmap.org` | The documentation site. |
-| `site.tlcmap.org` | The WordPress site, relocated from `docs.tlcmap.org`. |
-| `views.tlcmap.org` | TLCMap Views. Unchanged. |
+The interim host overrides both. `deploy/guide.tlcmap.org.conf` aliases `/robots.txt` to
+[`deploy/robots-noindex.txt`](./deploy/robots-noindex.txt), which disallows everything,
+denies `sitemap.xml`, and sets `X-Robots-Tag: noindex, nofollow` on every response. The
+`robots.txt` stops well-behaved crawlers fetching at all; the header covers a crawler that
+ignores it, or one that reaches a page from a link somewhere else. Nothing indexed under
+`guide.tlcmap.org` means nothing to migrate at the cutover.
 
-The documentation site takes over `docs.tlcmap.org` and the WordPress site moves to
-`site.tlcmap.org`. Both happen in a single cutover, so no interim public hostname is ever
-published: the site is authored and reviewed on a staging host excluded from search
-indexing, and goes live at its final URL.
+The same override suits any staging host.
 
 ### Paths
 
@@ -166,10 +195,17 @@ After the cutover the `docs.tlcmap.org` virtual host serves the documentation si
 also owns the redirects for everything that used to live there:
 
 - `/help/*` — to the corresponding documentation path above.
-- Every other legacy WordPress path — to `site.tlcmap.org` at the same path.
+- The legacy WordPress paths — to `site.tlcmap.org` at the same path.
 
 Both sets are 301s and are kept indefinitely. Existing `docs.tlcmap.org` URLs appear in
 publications, research outputs and third-party links, and must not break.
+
+The WordPress paths are named one by one in the virtual host rather than caught by a
+fallback, because Apache cannot tell a legacy WordPress path from a typo: a fallback would
+send every unknown URL to WordPress and the documentation site could never show its own
+404 page. The list is `/about/`, `/contact/`, `/first-australians/`, `/core-data/`,
+`/partners/`, `/researchers/`, `/research-outputs/`, `/updates/` and `/newsletter/`.
+Anything else on the WordPress site needs adding to it.
 
 ### Application integration
 
@@ -185,6 +221,12 @@ It is therefore split in two:
 | --- | --- | --- |
 | `TLCMAP_DOC_URL` | `https://docs.tlcmap.org/` | the 17 documentation links, repointed to the paths above |
 | `TLCMAP_SITE_URL` | `https://site.tlcmap.org/` | the 13 WordPress links |
+
+Both values belong to the cutover. Neither host serves its new content before then, so the
+application change is part of the cutover rather than something to do now. Pointing
+`TLCMAP_DOC_URL` at `https://guide.tlcmap.org/` in the meantime would work — the interim
+host is hidden from search engines, not from people — but it means setting the value
+twice.
 
 Also in the application:
 
