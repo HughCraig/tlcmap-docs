@@ -103,12 +103,43 @@ reason its reference documentation stays in that repository rather than on this 
 ## Hosting
 
 The built site is served by Apache on the same server as the TLCMap application, from its
-own virtual host. Deployment builds the site and syncs the output directory to that
-virtual host's document root.
+own virtual host.
+
+The repository is cloned to `/var/www/tlcmap-docs` and built there. Only the build output
+is served — the document root is `docs/.vitepress/dist` inside the clone — so the working
+tree, `.git` and `node_modules` all sit outside the web path.
+
+```
+/var/www/tlcmap-docs/               the clone, not served
+  deploy/robots-noindex.txt         aliased to /robots.txt on the interim host
+  docs/.vitepress/dist/             the document root
+```
 
 The site is **not** served from the application's document root: the Laravel front
 controller rewrite in `public/.htaccess` must stay out of the request path for
-documentation URLs.
+documentation URLs. Check too that no other virtual host, the default one included, serves
+`/var/www/tlcmap-docs` itself — that would publish the source and the git history.
+
+### Deploying
+
+The server needs Node, to the version in [Development](#development). To release:
+
+```
+cd /var/www/tlcmap-docs
+git pull
+npm ci
+npm run build
+```
+
+No Apache reload is needed; the files are replaced under the running server.
+
+The build empties the output directory before writing it, so for the few seconds it takes,
+the site returns 404s. That is tolerable for documentation. If it ever matters, build
+somewhere else and swap the result into place rather than building over the live copy.
+
+`npm run build` fails on a link to a page that does not exist, so a broken release stops at
+the build rather than reaching the document root — but it stops *after* the directory has
+been emptied. Run the build locally before pushing.
 
 ### Hostnames
 
@@ -168,12 +199,17 @@ at `sitemap.xml`, which the build generates from `sitemap.hostname` in the site
 configuration. Both name `docs.tlcmap.org`, because that is where the documentation is
 meant to be found.
 
-The interim host overrides both. `deploy/guide.tlcmap.org.conf` aliases `/robots.txt` to
-[`deploy/robots-noindex.txt`](./deploy/robots-noindex.txt), which disallows everything,
-denies `sitemap.xml`, and sets `X-Robots-Tag: noindex, nofollow` on every response. The
-`robots.txt` stops well-behaved crawlers fetching at all; the header covers a crawler that
-ignores it, or one that reaches a page from a link somewhere else. Nothing indexed under
-`guide.tlcmap.org` means nothing to migrate at the cutover.
+The interim host overrides both. `deploy/guide.tlcmap.org.conf` does three things: it
+aliases `/robots.txt` to [`deploy/robots-noindex.txt`](./deploy/robots-noindex.txt), which
+disallows everything; it denies `sitemap.xml`; and it sets `X-Robots-Tag: noindex,
+nofollow` on every response. The `robots.txt` stops well-behaved crawlers fetching at all,
+and the header covers a crawler that ignores it, or one that reaches a page from a link
+somewhere else. Nothing indexed under `guide.tlcmap.org` means nothing to migrate at the
+cutover.
+
+The alias reads the file from the clone rather than a copy placed beside it, so editing it
+here and pulling is the whole of changing it. It sits outside the document root, so it is
+reachable only through the alias.
 
 The same override suits any staging host.
 
