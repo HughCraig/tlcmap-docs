@@ -9,6 +9,9 @@ const REPO = 'https://github.com/HughCraig/tlcmap-docs'
 /** The TLCMap application. */
 const APP = 'https://tlcmap.org'
 
+/** This site's own public hostname, used to write absolute URLs into the sitemap. */
+const DOCS = 'https://docs.tlcmap.org/'
+
 /** The WordPress site, which holds the general and institutional content. */
 const SITE = 'https://site.tlcmap.org'
 
@@ -25,6 +28,9 @@ export default defineConfig({
     'User guide and developer documentation for the Time Layered Cultural Map.',
   cleanUrls: true,
   lastUpdated: true,
+
+  // Written to dist/sitemap.xml. Search engines are pointed at it by robots.txt.
+  sitemap: { hostname: DOCS },
 
   head: [
     ['link', { rel: 'icon', href: '/favicon.ico' }],

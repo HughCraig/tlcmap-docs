@@ -110,6 +110,30 @@ The site is **not** served from the application's document root: the Laravel fro
 controller rewrite in `public/.htaccess` must stay out of the request path for
 documentation URLs.
 
+### Server configuration
+
+The virtual host is version-controlled at
+[`deploy/docs.tlcmap.org.conf`](./deploy/docs.tlcmap.org.conf), including the legacy
+redirects below. It needs `rewrite`, `headers` and `deflate` enabled:
+
+```
+sudo a2enmod rewrite headers deflate
+```
+
+The one rule that cannot be omitted is the extensionless rewrite. The site is built with
+`cleanUrls`, so a page is linked as `/guide/accounts` but written to disk as
+`guide/accounts.html`. Apache has to map one to the other, or every internal link on the
+site returns 404. The rest of the virtual host — the themed 404 page, cache lifetimes and
+compression — is worth having but nothing breaks without it.
+
+Rules live in the virtual host rather than in an `.htaccess` file, so the document root
+holds only the built site and `AllowOverride` stays `None`.
+
+`docs/public/robots.txt` allows indexing and points at `sitemap.xml`, which the build
+generates from `sitemap.hostname` in the site configuration. The staging host must
+override that file with a `Disallow: /` so the pre-cutover site is not indexed; an `Alias`
+for `/robots.txt` in the staging virtual host is enough.
+
 ### Hostnames
 
 | Hostname | Serves |
