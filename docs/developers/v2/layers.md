@@ -154,7 +154,7 @@ GET /api/v2/layers?bbox=150.8,-33.1,151.4,-32.6
       },
       "has_license": false,
       "has_warning": false,
-      "url": "http://tlcmap-ghap.laragon.local/layers/84"
+      "url": "https://tlcmap.org/layers/84"
     },
     {
       "id": 102,
@@ -176,7 +176,7 @@ GET /api/v2/layers?bbox=150.8,-33.1,151.4,-32.6
       },
       "has_license": false,
       "has_warning": false,
-      "url": "http://tlcmap-ghap.laragon.local/layers/102"
+      "url": "https://tlcmap.org/layers/102"
     },
     "…"
   ]
@@ -241,7 +241,7 @@ GET /api/v2/layers?has_warning=true&min_records=10000&sort=name&per_page=2
       },
       "has_license": false,
       "has_warning": true,
-      "url": "http://tlcmap-ghap.laragon.local/layers/461"
+      "url": "https://tlcmap.org/layers/461"
     }
   ]
 }
@@ -279,7 +279,7 @@ GET /api/v2/layers?date_from=1800&date_to=1850&include_undated=false&per_page=2
     "returned": 2,
     "per_page": 2,
     "next_cursor": "eyJ2IjoxLCJoIjoiYTlmY2U1N2JlNWVjYzY5NiIsImsiOjk5LCJpIjo5OSwibiI6Mn0",
-    "next": "http://tlcmap-ghap.laragon.local/api/v2/layers?date_from=1800&date_to=1850&include_undated=false&per_page=2&cursor=eyJ2IjoxLCJoIjoiYTlmY2U1N2JlNWVjYzY5NiIsImsiOjk5LCJpIjo5OSwibiI6Mn0"
+    "next": "https://tlcmap.org/api/v2/layers?date_from=1800&date_to=1850&include_undated=false&per_page=2&cursor=eyJ2IjoxLCJoIjoiYTlmY2U1N2JlNWVjYzY5NiIsImsiOjk5LCJpIjo5OSwibiI6Mn0"
   },
   "layers": [
     {
@@ -302,7 +302,7 @@ GET /api/v2/layers?date_from=1800&date_to=1850&include_undated=false&per_page=2
       },
       "has_license": false,
       "has_warning": false,
-      "url": "http://tlcmap-ghap.laragon.local/layers/84"
+      "url": "https://tlcmap.org/layers/84"
     },
     {
       "id": 99,
@@ -324,7 +324,7 @@ GET /api/v2/layers?date_from=1800&date_to=1850&include_undated=false&per_page=2
       },
       "has_license": false,
       "has_warning": false,
-      "url": "http://tlcmap-ghap.laragon.local/layers/99"
+      "url": "https://tlcmap.org/layers/99"
     }
   ]
 }
@@ -377,7 +377,7 @@ GET /api/v2/layers/206
     "created": "2022-04-12",
     "created_at": "2022-04-12T10:33:12Z",
     "updated_at": "2022-06-29T04:42:15Z",
-    "url": "http://tlcmap-ghap.laragon.local/layers/206"
+    "url": "https://tlcmap.org/layers/206"
   },
   "summary": {
     "total": 52,
@@ -506,7 +506,7 @@ GET /api/v2/layers/206/features?per_page=2
     "created": "2022-04-12",
     "created_at": "2022-04-12T10:33:12Z",
     "updated_at": "2022-06-29T04:42:15Z",
-    "url": "http://tlcmap-ghap.laragon.local/layers/206"
+    "url": "https://tlcmap.org/layers/206"
   },
   "query": {
     "sort": "order",
@@ -538,7 +538,7 @@ GET /api/v2/layers/206/features?per_page=2
     "returned": 2,
     "per_page": 2,
     "next_cursor": "eyJ2IjoxLCJoIjoiYmJlZmFlOGZhMGU3YWJkZCIsImsiOjEsImkiOjQyMjMwLCJuIjoyfQ",
-    "next": "http://tlcmap-ghap.laragon.local/api/v2/layers/206/features?per_page=2&cursor=eyJ2IjoxLCJoIjoiYmJlZmFlOGZhMGU3YWJkZCIsImsiOjEsImkiOjQyMjMwLCJuIjoyfQ"
+    "next": "https://tlcmap.org/api/v2/layers/206/features?per_page=2&cursor=eyJ2IjoxLCJoIjoiYmJlZmFlOGZhMGU3YWJkZCIsImsiOjEsImkiOjQyMjMwLCJuIjoyfQ"
   },
   "features": [
     {
@@ -567,7 +567,7 @@ GET /api/v2/layers/206/features?per_page=2
         "external_url": null,
         "image_url": null,
         "glycerine_url": null,
-        "url": "http://tlcmap-ghap.laragon.local/places/ta4f5",
+        "url": "https://tlcmap.org/places/ta4f5",
         "created_at": "2022-04-12T10:53:09Z",
         "updated_at": "2026-11-01T23:59:11Z",
         "extended_data": {
@@ -608,7 +608,7 @@ GET /api/v2/layers/206/features?per_page=2
         "external_url": null,
         "image_url": null,
         "glycerine_url": null,
-        "url": "http://tlcmap-ghap.laragon.local/places/ta4f6",
+        "url": "https://tlcmap.org/places/ta4f6",
         "created_at": "2022-04-12T10:53:09Z",
         "updated_at": "2026-11-01T23:59:11Z",
         "extended_data": {
@@ -667,7 +667,7 @@ order. None is dropped.
     "created": "2022-04-12",
     "created_at": "2022-04-12T10:33:12Z",
     "updated_at": "2022-06-29T04:42:15Z",
-    "url": "http://tlcmap-ghap.laragon.local/layers/206"
+    "url": "https://tlcmap.org/layers/206"
   },
   "query": {
     "sort": "start",
@@ -699,7 +699,7 @@ order. None is dropped.
     "returned": 2,
     "per_page": 2,
     "next_cursor": "eyJ2IjoxLCJoIjoiODdkODAyNzcwNWY4MWYxMiIsImsiOm51bGwsImkiOjQyNDE0LCJuIjoyfQ",
-    "next": "http://tlcmap-ghap.laragon.local/api/v2/layers/206/features?sort=start&direction=desc&nulls=first&per_page=2&cursor=eyJ2IjoxLCJoIjoiODdkODAyNzcwNWY4MWYxMiIsImsiOm51bGwsImkiOjQyNDE0LCJuIjoyfQ"
+    "next": "https://tlcmap.org/api/v2/layers/206/features?sort=start&direction=desc&nulls=first&per_page=2&cursor=eyJ2IjoxLCJoIjoiODdkODAyNzcwNWY4MWYxMiIsImsiOm51bGwsImkiOjQyNDE0LCJuIjoyfQ"
   },
   "features": [
     {
@@ -728,7 +728,7 @@ order. None is dropped.
         "external_url": null,
         "image_url": null,
         "glycerine_url": null,
-        "url": "http://tlcmap-ghap.laragon.local/places/ta5af",
+        "url": "https://tlcmap.org/places/ta5af",
         "created_at": "2022-06-29T04:42:15Z",
         "updated_at": "2026-11-01T23:59:11Z",
         "extended_data": {
@@ -764,7 +764,7 @@ GET /api/v2/layers/206/features?per_page=2&sort=id&cursor=…
     "returned": 2,
     "per_page": 2,
     "next_cursor": "eyJ2IjoxLCJoIjoiNzZmYTI0MmZiMjJjYzhkMiIsImsiOjQyMjMyLCJpIjo0MjIzMiwibiI6NH0",
-    "next": "http://tlcmap-ghap.laragon.local/api/v2/layers/206/features?per_page=2&sort=id&cursor=eyJ2IjoxLCJoIjoiNzZmYTI0MmZiMjJjYzhkMiIsImsiOjQyMjMyLCJpIjo0MjIzMiwibiI6NH0"
+    "next": "https://tlcmap.org/api/v2/layers/206/features?per_page=2&sort=id&cursor=eyJ2IjoxLCJoIjoiNzZmYTI0MmZiMjJjYzhkMiIsImsiOjQyMjMyLCJpIjo0MjIzMiwibiI6NH0"
   }
 }
 ```

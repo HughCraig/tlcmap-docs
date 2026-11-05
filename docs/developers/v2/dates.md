@@ -209,7 +209,7 @@ GET /api/v2/places?date_from=-400&date_to=-300&include_undated=false&per_page=1
     "returned": 1,
     "per_page": 1,
     "next_cursor": "eyJ2IjoxLCJoIjoiZDkzMDU2ZjAwZmIxZmVlNyIsImsiOjQxMDk5LCJpIjo0MTA5OSwibiI6MX0",
-    "next": "http://tlcmap-ghap.laragon.local/api/v2/places?date_from=-400&date_to=-300&include_undated=false&per_page=1&cursor=eyJ2IjoxLCJoIjoiZDkzMDU2ZjAwZmIxZmVlNyIsImsiOjQxMDk5LCJpIjo0MTA5OSwibiI6MX0"
+    "next": "https://tlcmap.org/api/v2/places?date_from=-400&date_to=-300&include_undated=false&per_page=1&cursor=eyJ2IjoxLCJoIjoiZDkzMDU2ZjAwZmIxZmVlNyIsImsiOjQxMDk5LCJpIjo0MTA5OSwibiI6MX0"
   },
   "features": [
     {
@@ -238,7 +238,7 @@ GET /api/v2/places?date_from=-400&date_to=-300&include_undated=false&per_page=1
         "external_url": null,
         "image_url": null,
         "glycerine_url": null,
-        "url": "http://tlcmap-ghap.laragon.local/places/ta08b",
+        "url": "https://tlcmap.org/places/ta08b",
         "created_at": "2022-03-05T06:55:20Z",
         "updated_at": "2026-11-01T23:59:11Z",
         "extended_data": {

@@ -246,7 +246,7 @@ GET /api/v2/places?bbox=150.8,-33.1,151.4,-32.6&per_page=2
     "returned": 2,
     "per_page": 2,
     "next_cursor": "eyJ2IjoxLCJoIjoiM2ViNzU4N2MyMmViODUyMSIsImsiOjY0MzcsImkiOjY0MzcsIm4iOjJ9",
-    "next": "http://tlcmap-ghap.laragon.local/api/v2/places?bbox=150.8%2C-33.1%2C151.4%2C-32.6&per_page=2&cursor=eyJ2IjoxLCJoIjoiM2ViNzU4N2MyMmViODUyMSIsImsiOjY0MzcsImkiOjY0MzcsIm4iOjJ9"
+    "next": "https://tlcmap.org/api/v2/places?bbox=150.8%2C-33.1%2C151.4%2C-32.6&per_page=2&cursor=eyJ2IjoxLCJoIjoiM2ViNzU4N2MyMmViODUyMSIsImsiOjY0MzcsImkiOjY0MzcsIm4iOjJ9"
   },
   "features": [
     {
@@ -275,7 +275,7 @@ GET /api/v2/places?bbox=150.8,-33.1,151.4,-32.6&per_page=2
         "external_url": null,
         "image_url": null,
         "glycerine_url": null,
-        "url": "http://tlcmap-ghap.laragon.local/places/t9a2",
+        "url": "https://tlcmap.org/places/t9a2",
         "created_at": "2021-02-17T02:37:20Z",
         "updated_at": "2026-11-01T23:59:02Z",
         "extended_data": {},
@@ -308,7 +308,7 @@ GET /api/v2/places?bbox=150.8,-33.1,151.4,-32.6&per_page=2
         "external_url": null,
         "image_url": null,
         "glycerine_url": null,
-        "url": "http://tlcmap-ghap.laragon.local/places/t1925",
+        "url": "https://tlcmap.org/places/t1925",
         "created_at": "2021-06-19T22:59:52Z",
         "updated_at": "2026-11-01T23:58:59Z",
         "extended_data": {
@@ -500,7 +500,7 @@ GET /api/v2/places?name=Wollombe&match=fuzzy&per_page=1
     "returned": 1,
     "per_page": 1,
     "next_cursor": "eyJ2IjoxLCJoIjoiZGZmZDAxZjFlY2RiOTI1ZCIsImsiOjEwMDIzLCJpIjoxMDAyMywibiI6MX0",
-    "next": "http://tlcmap-ghap.laragon.local/api/v2/places?name=Wollombe&match=fuzzy&per_page=1&cursor=eyJ2IjoxLCJoIjoiZGZmZDAxZjFlY2RiOTI1ZCIsImsiOjEwMDIzLCJpIjoxMDAyMywibiI6MX0"
+    "next": "https://tlcmap.org/api/v2/places?name=Wollombe&match=fuzzy&per_page=1&cursor=eyJ2IjoxLCJoIjoiZGZmZDAxZjFlY2RiOTI1ZCIsImsiOjEwMDIzLCJpIjoxMDAyMywibiI6MX0"
   },
   "features": [
     {
@@ -529,7 +529,7 @@ GET /api/v2/places?name=Wollombe&match=fuzzy&per_page=1
         "external_url": null,
         "image_url": null,
         "glycerine_url": null,
-        "url": "http://tlcmap-ghap.laragon.local/places/t2727",
+        "url": "https://tlcmap.org/places/t2727",
         "created_at": "2021-08-06T02:18:06Z",
         "updated_at": "2026-11-01T23:59:09Z",
         "extended_data": {},
@@ -607,7 +607,7 @@ GET /api/v2/places?bbox=150.8,-33.1,151.4,-32.6&date_from=1820&date_to=1860&incl
     "returned": 1,
     "per_page": 1,
     "next_cursor": "eyJ2IjoxLCJoIjoiNzBlZDUzZTgxMGU1ZWRkNSIsImsiOjY0MTE5LCJpIjo2NDExOSwibiI6MX0",
-    "next": "http://tlcmap-ghap.laragon.local/api/v2/places?date_from=1820&date_to=1860&bbox=150.8%2C-33.1%2C151.4%2C-32.6&include_undated=false&per_page=1&cursor=eyJ2IjoxLCJoIjoiNzBlZDUzZTgxMGU1ZWRkNSIsImsiOjY0MTE5LCJpIjo2NDExOSwibiI6MX0"
+    "next": "https://tlcmap.org/api/v2/places?date_from=1820&date_to=1860&bbox=150.8%2C-33.1%2C151.4%2C-32.6&include_undated=false&per_page=1&cursor=eyJ2IjoxLCJoIjoiNzBlZDUzZTgxMGU1ZWRkNSIsImsiOjY0MTE5LCJpIjo2NDExOSwibiI6MX0"
   },
   "features": [
     {
@@ -636,7 +636,7 @@ GET /api/v2/places?bbox=150.8,-33.1,151.4,-32.6&date_from=1820&date_to=1860&incl
         "external_url": "https://www.ausstage.edu.au/pages/venue/14220",
         "image_url": null,
         "glycerine_url": null,
-        "url": "http://tlcmap-ghap.laragon.local/places/tfa77",
+        "url": "https://tlcmap.org/places/tfa77",
         "created_at": "2022-11-14T01:43:01Z",
         "updated_at": "2026-11-01T23:59:32Z",
         "extended_data": {
@@ -759,7 +759,7 @@ GET /api/v2/places?bbox=150.8,-33.1,151.4,-32.6&sample=1&seed=docs
         "external_url": null,
         "image_url": null,
         "glycerine_url": null,
-        "url": "http://tlcmap-ghap.laragon.local/places/ab573",
+        "url": "https://tlcmap.org/places/ab573",
         "created_at": "2023-03-29T06:51:38Z",
         "updated_at": "2023-03-29T06:51:38Z",
         "extended_data": {},
@@ -850,7 +850,7 @@ shows the cursor and the ready-made URL for the next page.
     "returned": 2,
     "per_page": 2,
     "next_cursor": "eyJ2IjoxLCJoIjoiZjZhZTQ2ZGI3NWZlM2QxMiIsImsiOjE0MTMwLCJpIjoxNDEzMCwibiI6Mn0",
-    "next": "http://tlcmap-ghap.laragon.local/api/v2/places?name=Cessnock&match=contains&limit=3&per_page=2&cursor=eyJ2IjoxLCJoIjoiZjZhZTQ2ZGI3NWZlM2QxMiIsImsiOjE0MTMwLCJpIjoxNDEzMCwibiI6Mn0"
+    "next": "https://tlcmap.org/api/v2/places?name=Cessnock&match=contains&limit=3&per_page=2&cursor=eyJ2IjoxLCJoIjoiZjZhZTQ2ZGI3NWZlM2QxMiIsImsiOjE0MTMwLCJpIjoxNDEzMCwibiI6Mn0"
   }
 }
 ```
