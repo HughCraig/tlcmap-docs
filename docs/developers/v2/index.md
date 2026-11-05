@@ -56,6 +56,7 @@ Each endpoint has a fixed list of parameters. A request that breaks any of these
 - an **unknown** parameter, including a misspelt one;
 - a **repeated** or array parameter (`?sources=anps&sources=ncg`, `?layers[]=1`);
 - an **empty** value (`?bbox=`) — an empty value is an error, never a silently absent filter;
+- a name or value that is not UTF-8 text, or contains a NUL character;
 - a value of the wrong type, out of range, or not one of the allowed values;
 - an invalid combination, such as `match` without `name`.
 

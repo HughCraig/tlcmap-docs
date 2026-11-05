@@ -94,7 +94,7 @@ quoted  := "text" or 'text'                    no escapes; use the other quote t
 | --- | --- | --- |
 | `=` | any text | equals it exactly, including case |
 | `textmatch` | any text | contains it, ignoring case |
-| `>`, `<` | a decimal number | is a decimal number and is greater or less |
+| `>`, `<` | a decimal number, at most 1,000 digits either side of the point | is such a number and is greater or less |
 | `before` | a date | is a date whose period ends before the value's period begins |
 | `after` | a date | is a date whose period begins after the value's period ends |
 
