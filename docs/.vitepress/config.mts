@@ -121,6 +121,17 @@ export default defineConfig({
             { text: 'RO-Crate', link: '/developers/ro-crate' },
           ],
         },
+        {
+          text: 'API v2 (unstable)',
+          items: [
+            { text: 'Overview', link: '/developers/v2/' },
+            { text: 'Place search', link: '/developers/v2/places' },
+            { text: 'Layers', link: '/developers/v2/layers' },
+            { text: 'Dates', link: '/developers/v2/dates' },
+            { text: 'Errors', link: '/developers/v2/errors' },
+            { text: 'Differences from v1', link: '/developers/v2/differences' },
+          ],
+        },
       ],
 
       '/views/': [

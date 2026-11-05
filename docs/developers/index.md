@@ -16,6 +16,14 @@ browser, start with the [user guide](/guide/).
 | [Output formats](./formats) | The GeoJSON, KML and CSV that come back |
 | [Data model](./data-model) | What a record holds, and what the field names mean |
 | [RO-Crate](./ro-crate) | The packaged export for deposit in a repository |
+| [API v2](./v2/) | A newer, stricter API for places and layers. **Unstable until declared stable.** |
+
+::: warning API v2 is new
+This section documents the original API. A newer [API v2](./v2/) is being built beside it, with
+strict parameters, JSON error bodies and cursor paging. It is unstable until it is declared
+stable: its parameters and responses may change without notice. Nothing on the other pages
+changes because of it.
+:::
 
 ## Base URL
 
