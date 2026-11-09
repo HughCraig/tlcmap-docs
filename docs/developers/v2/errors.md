@@ -74,7 +74,7 @@ GET /api/v2/places?nme=Wollombi
     "details": {
       "parameter": "nme",
       "rule": "unknown",
-      "accepts": "name, match, sources, layers, bbox, polygon, date_from, date_to, include_undated, state, lga, feature_term, record_type, extended_data, summary_only, sort, direction, nulls, limit, sample, seed, cursor, per_page"
+      "accepts": "name, match, sources, layers, bbox, polygon, date_from, date_to, include_undated, state, lga, parish, feature_term, record_type, extended_data, summary_only, sort, direction, nulls, limit, sample, seed, cursor, per_page"
     }
   }
 }

@@ -157,6 +157,7 @@ GET /api/v2/places?date_from=-400&date_to=-300&include_undated=false&per_page=1
     "include_undated": false,
     "state": null,
     "lga": null,
+    "parish": null,
     "feature_term": null,
     "record_type": null,
     "extended_data": null,

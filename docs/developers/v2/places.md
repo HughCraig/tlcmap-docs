@@ -29,7 +29,7 @@ v2 is unstable until declared stable. See the [overview](./).
 | `polygon` | none | `lon lat,lon lat,…`. At least three distinct vertices and at most 1,000. The ring is closed for you. An invalid polygon is a [`400 INVALID_GEOMETRY`](./errors#_400-invalid-geometry). A polygon cannot cross the antimeridian; `bbox` can. |
 | `date_from`, `date_to` | none | A date in a [form v2 reads](./dates). A record matches if its period overlaps the range. Either may be given alone. `date_from` later than `date_to` is a `400`. |
 | `include_undated` | `true` | Whether records with no usable date are kept when a date filter is given. It has no effect without `date_from` or `date_to`. |
-| `state`, `lga`, `feature_term`, `record_type` | none | One value each, up to 200 characters, matched exactly and case-insensitively against the whole field. `lga=CESSNOCK` matches `Cessnock`; `lga=Cessnock Council` matches neither. `record_type` is the record's type. |
+| `state`, `lga`, `parish`, `feature_term`, `record_type` | none | One value each, up to 200 characters, matched against the whole field. See [Matching whole values](#matching-whole-values). `lga=CESSNOCK` matches `Cessnock`; `lga=Cessnock Council` matches neither. `record_type` is the record's type. [Vocabulary](./vocabulary) lists the values each field holds. |
 | `extended_data` | none | A condition over a record's extended data. See [Extended data filters](#extended-data-filters). |
 
 `bbox` and `polygon` together must both match. Records with no coordinates never match a
@@ -59,6 +59,14 @@ spatial filter.
 
 Results are not ranked by similarity; sort order is the order you choose. A fuzzy match
 returns records whose text is similar, which includes spellings you did not type.
+
+### Matching whole values
+
+`state`, `lga`, `parish`, `feature_term` and `record_type` each match the **whole** field,
+ignoring case, with no wildcards, and ignoring any space, tab, carriage return or line feed
+stored around the value. A record whose lga is stored as `Cessnock ` (with a trailing space) or
+`CESSNOCK` matches `lga=cessnock`; neither `Cessnock Shire` nor `Cessnock Council` does. This is what makes a `value` from the
+[vocabulary](./vocabulary#passing-a-value-back) select exactly the records it counted.
 
 ### Limit and sample
 
@@ -193,6 +201,7 @@ GET /api/v2/places?bbox=150.8,-33.1,151.4,-32.6&per_page=2
     "include_undated": true,
     "state": null,
     "lga": null,
+    "parish": null,
     "feature_term": null,
     "record_type": null,
     "extended_data": null,
@@ -366,6 +375,7 @@ GET /api/v2/places?bbox=150.8,-33.1,151.4,-32.6&summary_only=true
     "include_undated": true,
     "state": null,
     "lga": null,
+    "parish": null,
     "feature_term": null,
     "record_type": null,
     "extended_data": null,
@@ -447,6 +457,7 @@ GET /api/v2/places?name=Wollombe&match=fuzzy&per_page=1
     "include_undated": true,
     "state": null,
     "lga": null,
+    "parish": null,
     "feature_term": null,
     "record_type": null,
     "extended_data": null,
@@ -561,6 +572,7 @@ GET /api/v2/places?bbox=150.8,-33.1,151.4,-32.6&date_from=1820&date_to=1860&incl
     "include_undated": false,
     "state": null,
     "lga": null,
+    "parish": null,
     "feature_term": null,
     "record_type": null,
     "extended_data": null,
@@ -677,6 +689,7 @@ GET /api/v2/places?bbox=150.8,-33.1,151.4,-32.6&sample=1&seed=docs
     "include_undated": true,
     "state": null,
     "lga": null,
+    "parish": null,
     "feature_term": null,
     "record_type": null,
     "extended_data": null,
@@ -790,6 +803,7 @@ GET /api/v2/places?layers=206&extended_data=Cost textmatch coin&summary_only=tru
     "include_undated": true,
     "state": null,
     "lga": null,
+    "parish": null,
     "feature_term": null,
     "record_type": null,
     "extended_data": "Cost textmatch coin",
@@ -851,6 +865,66 @@ shows the cursor and the ready-made URL for the next page.
     "per_page": 2,
     "next_cursor": "eyJ2IjoxLCJoIjoiZjZhZTQ2ZGI3NWZlM2QxMiIsImsiOjE0MTMwLCJpIjoxNDEzMCwibiI6Mn0",
     "next": "https://tlcmap.org/api/v2/places?name=Cessnock&match=contains&limit=3&per_page=2&cursor=eyJ2IjoxLCJoIjoiZjZhZTQ2ZGI3NWZlM2QxMiIsImsiOjE0MTMwLCJpIjoxNDEzMCwibiI6Mn0"
+  }
+}
+```
+
+### A parish
+
+`parish` matches a record's parish as the other four place fields do: the whole value, ignoring
+case. All 30 records of the parish of Cessnock come from the Australian National Placenames
+Survey, and none is dated.
+
+```
+GET /api/v2/places?parish=cessnock&summary_only=true
+```
+
+```json
+{
+  "query": {
+    "name": null,
+    "match": null,
+    "sources": ["layers", "anps", "ncg", "text"],
+    "layers": null,
+    "bbox": null,
+    "polygon": null,
+    "date_from": null,
+    "date_to": null,
+    "include_undated": true,
+    "state": null,
+    "lga": null,
+    "parish": "cessnock",
+    "feature_term": null,
+    "record_type": null,
+    "extended_data": null,
+    "summary_only": true,
+    "sort": "id",
+    "direction": "asc",
+    "nulls": "last",
+    "limit": null,
+    "sample": null,
+    "seed": null,
+    "cursor": null,
+    "per_page": 500
+  },
+  "summary": {
+    "total": 30,
+    "extent": [151.31777777777776, -32.88166666666667, 151.5011111111111, -32.748333333333335],
+    "no_coordinates_count": 0,
+    "date_range": null,
+    "undated": {
+      "total": 30,
+      "no_date": 30,
+      "unparseable_date": 0
+    },
+    "unparseable_dates": 0,
+    "by_source": {
+      "layers": 0,
+      "anps": 30,
+      "ncg": 0,
+      "text": 0
+    },
+    "by_layer": []
   }
 }
 ```

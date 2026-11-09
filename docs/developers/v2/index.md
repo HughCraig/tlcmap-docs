@@ -13,7 +13,9 @@ rest of this section. Do not build anything that cannot cope with a change here.
 | Page | Covers |
 | --- | --- |
 | [Place search](./places) | `GET /api/v2/places` — find records across every source |
-| [Layers](./layers) | `GET /api/v2/layers` and the layer detail and layer feature endpoints |
+| [Layers](./layers) | `GET /api/v2/layers` and the layer detail, layer feature and layer statistics endpoints |
+| [Vocabulary](./vocabulary) | `GET /api/v2/vocabulary` — the values of a field, with counts |
+| [Layer statistics](./statistics) | `GET /api/v2/layers/{id}/statistics` — a layer's counts, area and dates |
 | [Dates](./dates) | The date forms v2 reads, periods, BCE, and undated records |
 | [Errors](./errors) | Every status code and error body |
 | [Differences from v1](./differences) | Where v2 answers the same question differently |
@@ -30,6 +32,8 @@ https://tlcmap.org/api/v2
 | `GET /api/v2/layers` | The catalogue of public layers |
 | `GET /api/v2/layers/{id}` | One layer's metadata and a summary of its records |
 | `GET /api/v2/layers/{id}/features` | One layer's records, paged |
+| `GET /api/v2/layers/{id}/statistics` | One layer's counts, extent, area, dates and feature terms |
+| `GET /api/v2/vocabulary` | The distinct values of one field among the records a set of filters selects, with counts |
 
 `{id}` is digits only; `/api/v2/layers/abc` is a `404`. Only `GET` is routed. `OPTIONS` is
 answered for cross-origin preflight; any other method is a `405`.
@@ -188,6 +192,25 @@ separate from the original API's. Responses carry `X-RateLimit-Limit` and
 RATE_LIMITED`](./errors#_429-rate-limited) with a `Retry-After` header.
 
 This is a provisional value. Deliberate limits will replace it. Cache what you fetch.
+
+## Changes
+
+v2 is unstable, so what moves is recorded here.
+
+### 9 November 2026
+
+- **Two new endpoints.** [`GET /api/v2/vocabulary`](./vocabulary) lists the values of a field
+  with their record counts, and [`GET /api/v2/layers/{id}/statistics`](./statistics) reports a
+  layer's counts, extent, area and dates.
+- **Place search gains `parish`.** It is matched like `state`, `lga` and `feature_term`; see
+  [Place search](./places#choosing-records). The new key is in the `query` echo, after `lga`
+  (`"parish": null` when not given). Because a cursor belongs to the exact query it was issued
+  for, **a place search cursor issued before this change is refused** as belonging to another
+  query. Start the search again.
+- **`state`, `lga`, `parish`, `feature_term` and `record_type` ignore stored surrounding
+  whitespace.** A value stored with a space, tab, carriage return or line feed around it now
+  matches the filter without it. Matching is still whole-value and case-insensitive, so this only
+  adds matches. See [Matching whole values](./places#matching-whole-values).
 
 ## Status
 

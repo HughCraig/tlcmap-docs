@@ -127,6 +127,8 @@ export default defineConfig({
             { text: 'Overview', link: '/developers/v2/' },
             { text: 'Place search', link: '/developers/v2/places' },
             { text: 'Layers', link: '/developers/v2/layers' },
+            { text: 'Layer statistics', link: '/developers/v2/statistics' },
+            { text: 'Vocabulary', link: '/developers/v2/vocabulary' },
             { text: 'Dates', link: '/developers/v2/dates' },
             { text: 'Errors', link: '/developers/v2/errors' },
             { text: 'Differences from v1', link: '/developers/v2/differences' },
