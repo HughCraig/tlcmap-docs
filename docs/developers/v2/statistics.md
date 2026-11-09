@@ -27,7 +27,7 @@ v2 is unstable until declared stable. See the [overview](./).
     "count": 17917,
     "basis": { "records": 17917, "with_coordinates": 17917, "dated": 17917 },
     "extent": [77.9672, -68.5744, 167.9708, -9.2333],
-    "centroid": [141.6124756254918, -31.326447147130587],
+    "centroid": [141.61247562549178, -31.326447147130686],
     "convex_hull": { "type": "Polygon", "coordinates": ["…"] },
     "area_km2": 34487726.86391905,
     "density_per_km2": 0.0005195181483168352,
@@ -69,13 +69,13 @@ zero counts and no values, and every other figure `null`.
 | Figure | Definition | `null` when |
 | --- | --- | --- |
 | `extent` | `[minLon, minLat, maxLon, maxLat]` of the records with coordinates, as in the [summary](./#the-summary). | no record has coordinates |
-| `centroid` | `[lon, lat]`: the centre of the records' locations, measured on the surface of the earth's spheroid. | no record has coordinates |
+| `centroid` | `[lon, lat]`: the centre of the records' locations, computed on the sphere: the direction of the mean of the records' unit vectors. | no record has coordinates |
 | `convex_hull` | The smallest convex shape that holds every record with coordinates, as a GeoJSON geometry. A `Polygon`, or a `Point` or `LineString` when the records are at one location or in a straight line. | no record has coordinates |
 | `area_km2` | The area of the convex hull in square kilometres, measured on the spheroid (geodesic area). `0` when the hull is a `Point` or `LineString`. | no record has coordinates |
 | `density_per_km2` | `with_coordinates` divided by `area_km2`. | `area_km2` is `0` or `null` |
 
 The hull is drawn in the longitude and latitude plane, with straight edges there, and its area is
-measured on the spheroid. Neither the centroid nor the area is in square degrees, which shrink
+measured on the spheroid, while the centroid is computed on the sphere. Neither the centroid nor the area is in square degrees, which shrink
 with latitude. The centroid is not the centre of the extent.
 
 ::: warning The antimeridian
@@ -247,7 +247,7 @@ GET /api/v2/layers/461/statistics
       "dated": 17917
     },
     "extent": [77.9672, -68.5744, 167.9708, -9.2333],
-    "centroid": [141.6124756254918, -31.326447147130587],
+    "centroid": [141.61247562549178, -31.326447147130686],
     "convex_hull": {
       "type": "Polygon",
       "coordinates": [

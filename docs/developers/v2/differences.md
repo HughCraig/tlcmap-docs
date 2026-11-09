@@ -29,7 +29,7 @@ Each of these changes what a request returns.
 | Summary of a result | A search reports a total in `/api`, and nothing about dates or coordinates. | Every search carries a summary of the whole match set: extent, date range, undated and unparseable counts, counts by source and by layer. |
 | Layer catalogue | `/layers/json` lists every public layer, with no filters, and includes the contributor's declared extent fields. | A filterable catalogue whose `record_count`, `bbox`, `date_range` and `undated` are computed from the layer's records. Declared fields are only a hint, on layer detail. |
 | Spatial search of layers | The layer listing takes no spatial filter. | `bbox` and `polygon` on the catalogue match a layer only if one of its records is inside. |
-| Layer statistics | The figures exist only on the HTML page `/layers/{id}/basicstatistics`; the JSON endpoint returns the geometry only. On the page, area is square degrees multiplied by 10,000, the centroid is the centre in the degree plane, and median and mean dates are over the start and end date strings pooled together. | [`/layers/{id}/statistics`](./statistics) returns the figures as JSON. `area_km2` is the geodesic area of the convex hull on the spheroid, in square kilometres. The centroid is on the spheroid. `median_date` and `mean_date` are over each record's period midpoint, as exact integers in epoch milliseconds. |
+| Layer statistics | The figures exist only on the HTML page `/layers/{id}/basicstatistics`; the JSON endpoint returns the geometry only. On the page, area is square degrees multiplied by 10,000, the centroid is the centre in the degree plane, and median and mean dates are over the start and end date strings pooled together. | [`/layers/{id}/statistics`](./statistics) returns the figures as JSON. `area_km2` is the geodesic area of the convex hull on the spheroid, in square kilometres. The centroid is computed on the sphere: the direction of the mean of the records' unit vectors. `median_date` and `mean_date` are over each record's period midpoint, as exact integers in epoch milliseconds. |
 | Undefined figures | A figure that cannot be computed is shown as the text `Not Available`, or left out. | The figure is `null` and the request succeeds. `basis` says what each figure was computed over. |
 | Vocabulary | No endpoint; the values of a field can only be found by searching. | [`/vocabulary`](./vocabulary) lists a field's values with counts, and each `value` is the exact filter for that field. |
 
@@ -47,14 +47,20 @@ Each of these changes what a request returns.
 
 ## Not carried forward
 
-These v1 parameters and outputs do not exist in v2. Asking for one is a `400`.
+These v1 parameters and outputs do not exist in v2. Passing one of these parameters to a v2 endpoint is a `400`.
 
 - `names`, `fuzzynames`, `containsnames` (lists of names), `subquery`, `searchdescription`
 - `anps_id`, `from` and `to`, `viewBbox`, `chunks`, `download`
 - The Trove-style aliases (`q`, `exactq`, `encoding`, `n`, `l-lga`, `l-place`, `s`, `e`) `q` is still a parameter of the layer catalogue, where it means something else.
 - `line` on layer features. A client draws a route or timeline from the ordered points.
-- The advanced analysis statistics (clustering, closeness, temporal clustering and the rest). v2
-  reports a layer's basic statistics only; the advanced analyses stay on the original API for now.
+- The advanced statistics page, `/layers/{id}/advancedstatistics`: the distances between a layer's
+  places (smallest, largest, mean, median and standard deviation; the same for each place's nearest
+  neighbour) and the place most distant from any other. The clustering and closeness analyses are
+  separate endpoints of the original API; they stay there, as the next point says.
+- Four figures on the basic statistics page: the most central place, the most distant place from
+  the centre, the distribution (the average distance from the centroid, and its ratio to the area)
+  and the duration. v2's [statistics](./statistics) leave them out. The duration is
+  `date_range.end` minus `date_range.start`.
 - KML, CSV and RO-Crate output. The analysis endpoints and the layer and multilayer feeds of
   the original API are unchanged and are not part of v2.
 

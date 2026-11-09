@@ -121,7 +121,8 @@ other filters: the result's `summary.total` is the entry's `record_count`.
 
 The filter ignores case and the whitespace around a stored value, and compares the whole value
 without wildcards, so `state forest` and `State forest` both select all 14 records. See
-[Place search](./places#matching-whole-values).
+[Place search](./places#matching-whole-values). A filter value may be at most 200 characters long; a longer
+one is a `400` with rule `max_length`, so a value over that length is listed but cannot be passed back.
 
 ## Examples
 
@@ -311,7 +312,7 @@ each have 27 records, so the tie is broken by key, descending, and `CORRABARE` c
 the 1,318 records have no parish. Request `page.next` for the next three.
 
 ```
-GET /api/v2/vocabulary?field=parish&bbox=150.8,-33.1,151.4,-32.6&sort=record_count&direction=desc&per_page=3
+GET /api/v2/vocabulary?field=parish&bbox=150.8,-33.1,151.4,-32.6&per_page=3&sort=record_count&direction=desc
 ```
 
 ```json

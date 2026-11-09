@@ -54,6 +54,7 @@ the parameter, `details.rule` is the rule it broke, and `details.accepts` says w
 | --- | --- |
 | `unknown` | The endpoint has no such parameter. `accepts` lists the ones it has. |
 | `repeated` | The parameter appears more than once or as an array. |
+| `required` | A parameter the endpoint cannot do without is missing. |
 | `empty` | The value is empty. |
 | `encoding` | The name or value is not UTF-8 text, or contains a NUL character. |
 | `integer`, `boolean`, `one_of`, `range`, `max_length`, `format`, `order`, `date` | The value is not of the right type, form or size. |
