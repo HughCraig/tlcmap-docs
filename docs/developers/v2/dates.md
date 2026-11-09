@@ -209,8 +209,8 @@ GET /api/v2/places?date_from=-400&date_to=-300&include_undated=false&per_page=1
   "page": {
     "returned": 1,
     "per_page": 1,
-    "next_cursor": "eyJ2IjoxLCJoIjoiZDkzMDU2ZjAwZmIxZmVlNyIsImsiOjQxMDk5LCJpIjo0MTA5OSwibiI6MX0",
-    "next": "https://tlcmap.org/api/v2/places?date_from=-400&date_to=-300&include_undated=false&per_page=1&cursor=eyJ2IjoxLCJoIjoiZDkzMDU2ZjAwZmIxZmVlNyIsImsiOjQxMDk5LCJpIjo0MTA5OSwibiI6MX0"
+    "next_cursor": "eyJ2IjoxLCJoIjoiMDY5YzAxODQ3MmIzNzk4OCIsImsiOjQxMDk5LCJpIjo0MTA5OSwibiI6MX0",
+    "next": "https://tlcmap.org/api/v2/places?date_from=-400&date_to=-300&include_undated=false&per_page=1&cursor=eyJ2IjoxLCJoIjoiMDY5YzAxODQ3MmIzNzk4OCIsImsiOjQxMDk5LCJpIjo0MTA5OSwibiI6MX0"
   },
   "features": [
     {

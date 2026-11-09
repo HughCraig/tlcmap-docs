@@ -282,8 +282,9 @@ GET /api/v2/layers/461/statistics
 }
 ```
 
-`date_range` runs from 1 September 1826 to the last millisecond of 1 December 2022, because the
-layer's dates are months (the warning says the day was added). `median_date` is
+`date_range` runs from 1 September 1826 to the last millisecond of 1 December 2022: the layer's
+dates are single days, the first of a month (the warning says the day was added), and a day's
+period ends on its last millisecond. `median_date` is
 −118,368,000,001 (the last millisecond of 1 April 1966), and `mean_date` is −163,806,404,734
 (23 October 1964, about two hours after midnight). The two are not the same because the mean is
 pulled by the early records. No `feature_terms` are held for this layer, so `values` is empty and

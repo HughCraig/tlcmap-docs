@@ -254,8 +254,8 @@ GET /api/v2/places?bbox=150.8,-33.1,151.4,-32.6&per_page=2
   "page": {
     "returned": 2,
     "per_page": 2,
-    "next_cursor": "eyJ2IjoxLCJoIjoiM2ViNzU4N2MyMmViODUyMSIsImsiOjY0MzcsImkiOjY0MzcsIm4iOjJ9",
-    "next": "https://tlcmap.org/api/v2/places?bbox=150.8%2C-33.1%2C151.4%2C-32.6&per_page=2&cursor=eyJ2IjoxLCJoIjoiM2ViNzU4N2MyMmViODUyMSIsImsiOjY0MzcsImkiOjY0MzcsIm4iOjJ9"
+    "next_cursor": "eyJ2IjoxLCJoIjoiOTI1ZWJkMGJiOTRhZmY1ZSIsImsiOjY0MzcsImkiOjY0MzcsIm4iOjJ9",
+    "next": "https://tlcmap.org/api/v2/places?bbox=150.8%2C-33.1%2C151.4%2C-32.6&per_page=2&cursor=eyJ2IjoxLCJoIjoiOTI1ZWJkMGJiOTRhZmY1ZSIsImsiOjY0MzcsImkiOjY0MzcsIm4iOjJ9"
   },
   "features": [
     {
@@ -510,8 +510,8 @@ GET /api/v2/places?name=Wollombe&match=fuzzy&per_page=1
   "page": {
     "returned": 1,
     "per_page": 1,
-    "next_cursor": "eyJ2IjoxLCJoIjoiZGZmZDAxZjFlY2RiOTI1ZCIsImsiOjEwMDIzLCJpIjoxMDAyMywibiI6MX0",
-    "next": "https://tlcmap.org/api/v2/places?name=Wollombe&match=fuzzy&per_page=1&cursor=eyJ2IjoxLCJoIjoiZGZmZDAxZjFlY2RiOTI1ZCIsImsiOjEwMDIzLCJpIjoxMDAyMywibiI6MX0"
+    "next_cursor": "eyJ2IjoxLCJoIjoiMWE3YjZkZWY3ODNhZGM4ZCIsImsiOjEwMDIzLCJpIjoxMDAyMywibiI6MX0",
+    "next": "https://tlcmap.org/api/v2/places?name=Wollombe&match=fuzzy&per_page=1&cursor=eyJ2IjoxLCJoIjoiMWE3YjZkZWY3ODNhZGM4ZCIsImsiOjEwMDIzLCJpIjoxMDAyMywibiI6MX0"
   },
   "features": [
     {
@@ -618,8 +618,8 @@ GET /api/v2/places?bbox=150.8,-33.1,151.4,-32.6&date_from=1820&date_to=1860&incl
   "page": {
     "returned": 1,
     "per_page": 1,
-    "next_cursor": "eyJ2IjoxLCJoIjoiNzBlZDUzZTgxMGU1ZWRkNSIsImsiOjY0MTE5LCJpIjo2NDExOSwibiI6MX0",
-    "next": "https://tlcmap.org/api/v2/places?date_from=1820&date_to=1860&bbox=150.8%2C-33.1%2C151.4%2C-32.6&include_undated=false&per_page=1&cursor=eyJ2IjoxLCJoIjoiNzBlZDUzZTgxMGU1ZWRkNSIsImsiOjY0MTE5LCJpIjo2NDExOSwibiI6MX0"
+    "next_cursor": "eyJ2IjoxLCJoIjoiYjI3ZTNiYmE3NThmMDgxOCIsImsiOjY0MTE5LCJpIjo2NDExOSwibiI6MX0",
+    "next": "https://tlcmap.org/api/v2/places?bbox=150.8%2C-33.1%2C151.4%2C-32.6&date_from=1820&date_to=1860&include_undated=false&per_page=1&cursor=eyJ2IjoxLCJoIjoiYjI3ZTNiYmE3NThmMDgxOCIsImsiOjY0MTE5LCJpIjo2NDExOSwibiI6MX0"
   },
   "features": [
     {
@@ -863,8 +863,8 @@ shows the cursor and the ready-made URL for the next page.
   "page": {
     "returned": 2,
     "per_page": 2,
-    "next_cursor": "eyJ2IjoxLCJoIjoiZjZhZTQ2ZGI3NWZlM2QxMiIsImsiOjE0MTMwLCJpIjoxNDEzMCwibiI6Mn0",
-    "next": "https://tlcmap.org/api/v2/places?name=Cessnock&match=contains&limit=3&per_page=2&cursor=eyJ2IjoxLCJoIjoiZjZhZTQ2ZGI3NWZlM2QxMiIsImsiOjE0MTMwLCJpIjoxNDEzMCwibiI6Mn0"
+    "next_cursor": "eyJ2IjoxLCJoIjoiMjIwOTNjYWYwZWI5NmZmYyIsImsiOjE0MTMwLCJpIjoxNDEzMCwibiI6Mn0",
+    "next": "https://tlcmap.org/api/v2/places?name=Cessnock&match=contains&limit=3&per_page=2&cursor=eyJ2IjoxLCJoIjoiMjIwOTNjYWYwZWI5NmZmYyIsImsiOjE0MTMwLCJpIjoxNDEzMCwibiI6Mn0"
   }
 }
 ```

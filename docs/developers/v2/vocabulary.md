@@ -215,7 +215,7 @@ Of the 1,318 records in the box, 1,214 have a feature term and 104 do not. `stat
 entry of 14 records stored in two spellings. Passing it back gives the same 14:
 
 ```
-GET /api/v2/places?bbox=150.8,-33.1,151.4,-32.6&feature_term=state forest&summary_only=true
+GET /api/v2/places?bbox=150.8,-33.1,151.4,-32.6&feature_term=state%20forest&summary_only=true
 ```
 
 returns a `summary` whose `total` is `14`.

@@ -13,7 +13,7 @@ rest of this section. Do not build anything that cannot cope with a change here.
 | Page | Covers |
 | --- | --- |
 | [Place search](./places) | `GET /api/v2/places` — find records across every source |
-| [Layers](./layers) | `GET /api/v2/layers` and the layer detail, layer feature and layer statistics endpoints |
+| [Layers](./layers) | `GET /api/v2/layers` and the layer detail and layer feature endpoints |
 | [Vocabulary](./vocabulary) | `GET /api/v2/vocabulary` — the values of a field, with counts |
 | [Layer statistics](./statistics) | `GET /api/v2/layers/{id}/statistics` — a layer's counts, area and dates |
 | [Dates](./dates) | The date forms v2 reads, periods, BCE, and undated records |
