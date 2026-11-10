@@ -181,8 +181,9 @@ Access-Control-Allow-Methods: GET, OPTIONS
 Access-Control-Allow-Headers: Content-Type
 ```
 
-A v2 URL can be fetched straight from browser JavaScript on any site. No credentials are sent
-or accepted.
+A v2 URL can be fetched straight from browser JavaScript on any site. Browsers send no cookies or
+other credentials with these requests. A credential for a higher limit is for server-side use; see
+[Rate limit](#rate-limit).
 
 ## Rate limit
 

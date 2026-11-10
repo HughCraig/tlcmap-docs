@@ -276,7 +276,8 @@ GET /api/v2/places?extended_data=Years =
 ## 401 INVALID_CREDENTIAL
 
 An `Authorization` header was sent and it is not a valid credential. It is refused rather than
-ignored, so a mistyped or revoked credential is not quietly counted against the anonymous limit.
+ignored, so a mistyped or revoked credential is never quietly treated as anonymous use. The
+request still counts against the address's anonymous limit.
 The response carries `WWW-Authenticate: Bearer error="invalid_token"`. Nothing about the value
 sent is echoed, so `details` is empty. Send no `Authorization` header to use the anonymous limit;
 see [Rate limit](./#rate-limit).
