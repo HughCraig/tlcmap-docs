@@ -186,16 +186,42 @@ or accepted.
 
 ## Rate limit
 
-There is an interim limit of **60 requests a minute per address**. v2 keeps its own counter,
-separate from the original API's. Responses carry `X-RateLimit-Limit` and
-`X-RateLimit-Remaining`; past the limit a request is a [`429
-RATE_LIMITED`](./errors#_429-rate-limited) with a `Retry-After` header.
+v2 keeps its own counter, separate from the original API's. Two limits apply:
 
-This is a provisional value. Deliberate limits will replace it. Cache what you fetch.
+- **Anonymous use: 60 requests a minute per address.** The same machine serves the website and
+  the API, and some v2 requests are large (up to 5,000 features a page), so one request a second,
+  sustained, is as much as a single anonymous client should take from it. A script rarely needs
+  more: layer 461's 17,917 records are four requests at `per_page=5000`.
+- **A credential carries its own limit: 600 requests a minute, unless TLCMap issues it with
+  another.** A credential is for a server-side service that has been given its own allowance. The
+  limit is counted against the credential, not the address, so it is also a backstop if a
+  credential leaks or a client runs away.
+
+Every response carries `X-RateLimit-Limit` and `X-RateLimit-Remaining`, which show which limit
+applies and how much of the minute's allowance is left. Past the limit a request is a [`429
+RATE_LIMITED`](./errors#_429-rate-limited) with a `Retry-After` header giving the seconds to wait.
+
+A server-side service that needs more than the anonymous limit may ask TLCMap for a credential. Send
+it as `Authorization: Bearer <credential>`. Never send it from a web page: a credential in a page
+is visible to everyone who loads it, and v2 does not accept `Authorization` from browser JavaScript
+on other sites. An `Authorization` header that does not carry a valid credential is refused with a
+[`401 INVALID_CREDENTIAL`](./errors#_401-invalid-credential); send no header to use the anonymous
+limit.
+
+Cache what you fetch.
 
 ## Changes
 
 v2 is unstable, so what moves is recorded here.
+
+### 11 November 2026
+
+- **Rate limits are published.** Anonymous use is limited to 60 requests a minute per address; a
+  credential carries its own limit, 600 requests a minute unless TLCMap issues it with another.
+  See [Rate limit](#rate-limit).
+- **A new error, `401 INVALID_CREDENTIAL`.** An `Authorization` header that is not a valid
+  credential is refused rather than ignored. See
+  [`401 INVALID_CREDENTIAL`](./errors#_401-invalid-credential).
 
 ### 9 November 2026
 

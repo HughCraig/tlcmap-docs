@@ -43,7 +43,7 @@ Each of these changes what a request returns.
 | Output format | `format` selects `json`, `kml`, `csv` and, on search, `rocrate`. | JSON only. There is no `format` parameter. |
 | Booleans | Presence of a parameter can switch a behaviour on. | `true` or `false`, nothing else. |
 | The query | Not echoed. | Echoed in full, with defaults applied. |
-| Rate limit | Shares one counter per address with the rest of the web application. | Its own counter, interim 60 requests a minute. |
+| Rate limit | Shares one counter per address with the rest of the web application. | Its own counter: 60 requests a minute per address, or a credential's own limit (600 a minute unless TLCMap issues another). See [Rate limit](./#rate-limit). |
 
 ## Not carried forward
 

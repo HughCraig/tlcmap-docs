@@ -118,6 +118,6 @@ carries its own `creator`, `license`, `rights` and `citation` in its
 [metadata](./layers-api#layer-metadata) — read those before redistributing, and cite the
 layer rather than the site.
 
-The API is served by the same machine as the application, and there is no rate limiting
-to protect it. Cache what you fetch, ask for what you need, and do not poll a feed that
+The API is served by the same machine as the application. v2 publishes its
+[rate limits](./v2/#rate-limit). Cache what you fetch, ask for what you need, and do not poll a feed that
 changes a few times a year.
