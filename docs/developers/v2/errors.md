@@ -32,6 +32,7 @@ v2 is unstable until declared stable. See the [overview](./).
 | 400 | [`INVALID_PARAMETER`](#_400-invalid-parameter) | A parameter is unknown, repeated, empty, of the wrong type or out of range; a combination is invalid; a cursor is bad | `parameter`, `rule`, `accepts` |
 | 400 | [`INVALID_GEOMETRY`](#_400-invalid-geometry) | `polygon` is not valid | `parameter`, `reason` |
 | 400 | [`FILTER_REJECTED`](#_400-filter-rejected) | `extended_data` does not parse, or a value is the wrong kind | `expression`, `position`, `expected` |
+| 401 | [`INVALID_CREDENTIAL`](#_401-invalid-credential) | An `Authorization` header is sent and is not a valid credential | none |
 | 403 | [`LAYER_PRIVATE`](#_403-layer-private) | A requested layer exists and is not public | `layer_id` |
 | 404 | [`LAYER_NOT_FOUND`](#_404-layer-not-found) | A requested layer does not exist | `layer_id` |
 | 404 | [`NOT_FOUND`](#_404-not-found) | No v2 route matches | `path` |
@@ -272,6 +273,45 @@ GET /api/v2/places?extended_data=Years =
 
 (Spaces in a query are percent-encoded in the request actually sent.)
 
+## 401 INVALID_CREDENTIAL
+
+An `Authorization` header was sent and it is not a valid credential. It is refused rather than
+ignored, so a mistyped or revoked credential is never quietly treated as anonymous use. The
+request still counts against the address's anonymous limit.
+The response carries `WWW-Authenticate: Bearer error="invalid_token"`. Nothing about the value
+sent is echoed, so `details` is empty. Send no `Authorization` header to use the anonymous limit;
+see [Rate limit](./#rate-limit).
+
+This response was produced by sending a made-up credential to a development copy:
+
+```
+GET /api/v2/layers?per_page=1
+Authorization: Bearer tlcmap_wrong
+```
+
+```json
+{
+  "error": {
+    "code": "INVALID_CREDENTIAL",
+    "message": "The credential in the Authorization header is not valid. Send no Authorization header to use the anonymous limit.",
+    "details": {}
+  }
+}
+```
+
+Response headers:
+
+```
+HTTP/1.1 401 Unauthorized
+WWW-Authenticate: Bearer error="invalid_token"
+Content-Type: application/json; charset=utf-8
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Methods: GET, OPTIONS
+Access-Control-Allow-Headers: Content-Type
+X-RateLimit-Limit: 60
+X-RateLimit-Remaining: 59
+```
+
 ## 403 LAYER_PRIVATE
 
 A layer you asked for, through `layers` or by id, exists and is not public. It is never
@@ -358,7 +398,8 @@ POST /api/v2/places
 
 ## 429 RATE_LIMITED
 
-More than 60 requests a minute from one address. The response carries a `Retry-After` header
+More requests in a minute than the [limit that applies](./#rate-limit): the anonymous limit for an
+address, or a credential's own. The response carries a `Retry-After` header
 with the same number of seconds as `details.retry_after`.
 
 This response was produced by sending more than 60 requests inside a minute to a development
@@ -389,7 +430,7 @@ Access-Control-Allow-Origin: *
 Content-Type: application/json; charset=utf-8
 ```
 
-The limit is interim. See [Rate limit](./#rate-limit).
+See [Rate limit](./#rate-limit).
 
 ## 500 INTERNAL_ERROR
 
